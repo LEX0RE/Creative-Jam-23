@@ -13,22 +13,23 @@ public class PlayerController : Player
     [SerializeField] public float speed = 5;
     private Vector2 movementInput;
     public Animator animator;
+    private bool inQTE = false;
 
-    // Start is called before the first frame update
+
     private void Start()
     {
+        inQTE = false;
         transform.Translate(new Vector3(0, 5, 0));
     }
 
-    // Update is called once per frame
     private void Update()
     {
         transform.Translate(new Vector3(0, movementInput.y, movementInput.x) * speed * Time.deltaTime);
         moovefunction();
+
         actionIngame();
     }
     public void actionIngame() { 
-    //bool ispressingR = move
     
     }
     public void onMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -65,5 +66,62 @@ public class PlayerController : Player
 
         }
         Debug.Log("x"+ movementInput.x * 100);
+
+      
+    }
+
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        movementInput = ctx.ReadValue<Vector2>();
+    }
+    public void OnCross(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+            Debug.Log(ctx.control);
+        }
+    }
+    public void OnCircle(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+            Debug.Log(ctx.control);
+        }
+    }
+    public void OnSquare(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+            Debug.Log(ctx.control);
+        }
+    }
+    public void OnTriangle(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+            Debug.Log(ctx.control);
+        }
+    }
+
+    public void SetQTE(bool state)
+    {
+        inQTE = state;
+
     }
 }

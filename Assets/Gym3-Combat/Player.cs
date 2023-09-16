@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,7 +6,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        QTE.Instance.AddPlayer(this);
+        StartCoroutine(Timer());
     }
 
     // Update is called once per frame
@@ -16,8 +15,9 @@ public class Player : MonoBehaviour
 
     }
 
-    void TakeDamage()
+    IEnumerator Timer()
     {
-
+        yield return new WaitForSeconds(5);
+        QTE.Instance.StartQTEEvent(this);
     }
 }

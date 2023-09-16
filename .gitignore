@@ -6,6 +6,7 @@
 **/UI Toolkit/
 **/UI Toolkit.meta
 .vscode/
+.vs/
 
 [Tt]emp/
 [Oo]bj/
@@ -18,3 +19,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Assembly-CSharp.csproj
+**/TextMesh Pro/
+**/TextMesh Pro.meta
