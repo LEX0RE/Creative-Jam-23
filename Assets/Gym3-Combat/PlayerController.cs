@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Player
 {
-    [SerializeField] public float speed = 5; 
+    [SerializeField] public float speed = 5;
     private Vector2 movementInput;
 
     // Start is called before the first frame update

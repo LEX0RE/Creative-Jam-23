@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class PlayerQTEComponent : MonoBehaviour
 {
-    private bool visible = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool completed = false;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (completed)
+        {
+            Destroy(gameObject);
+        }
     }
 }
