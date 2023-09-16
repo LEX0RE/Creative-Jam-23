@@ -7,8 +7,8 @@ public class PlayerController : Player
 {
     public bool idle = true;
     public bool mooveLeft = false;
-    public bool moove =false;
-    private bool rotateApplied =false;
+    public bool moove = false;
+    private bool rotateApplied = false;
     public GameObject mesh;
     [SerializeField] public float speed = 5;
     private Vector2 movementInput;
@@ -24,16 +24,20 @@ public class PlayerController : Player
 
     private void Update()
     {
-        transform.Translate(new Vector3(0, movementInput.y, movementInput.x) * speed * Time.deltaTime);
+        if (inQTE)
+        {
+            transform.Translate(new Vector3(0, movementInput.y, movementInput.x) * speed * Time.deltaTime);
+        }
         moovefunction();
-
         actionIngame();
     }
-    public void actionIngame() { 
-    
+    public void actionIngame()
+    {
+
     }
     public void onMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
-    public void moovefunction() {
+    public void moovefunction()
+    {
         if (movementInput.x * 100 < 1 && movementInput.x * 100 > -1 & movementInput.y * 100 < 1)
         {
             idle = true;
@@ -41,33 +45,33 @@ public class PlayerController : Player
             mooveLeft = false;
             animator.SetBool("Run", false);
         }
-        else {
+        else
+        {
             idle = false;
             moove = true;
-            animator.SetBool("Run",true);
+            animator.SetBool("Run", true);
             if (movementInput.x < 0)
             {
                 mooveLeft = true;
-                if (!rotateApplied) {
+                if (!rotateApplied)
+                {
                     mesh.transform.Rotate(gameObject.transform.rotation.x, 180, gameObject.transform.rotation.z);
                     rotateApplied = true;
-                  
+
                 }
-               
+
             }
-            else {
+            else
+            {
                 mooveLeft = false;
-                if (rotateApplied) {
+                if (rotateApplied)
+                {
                     mesh.transform.Rotate(gameObject.transform.rotation.x, -180, gameObject.transform.rotation.z);
-                    
+
                     rotateApplied = false;
                 }
             }
-
         }
-        Debug.Log("x"+ movementInput.x * 100);
-
-      
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -78,44 +82,44 @@ public class PlayerController : Player
     {
         if (inQTE)
         {
-            Debug.Log(ctx.control);
+            QTE.Instance.SendCombo(ButtonControl.Cross);
         }
         else
         {
-            Debug.Log(ctx.control);
+
         }
     }
     public void OnCircle(InputAction.CallbackContext ctx)
     {
         if (inQTE)
         {
-            Debug.Log(ctx.control);
+            QTE.Instance.SendCombo(ButtonControl.Circle);
         }
         else
         {
-            Debug.Log(ctx.control);
+
         }
     }
     public void OnSquare(InputAction.CallbackContext ctx)
     {
         if (inQTE)
         {
-            Debug.Log(ctx.control);
+            QTE.Instance.SendCombo(ButtonControl.Square);
         }
         else
         {
-            Debug.Log(ctx.control);
+
         }
     }
     public void OnTriangle(InputAction.CallbackContext ctx)
     {
         if (inQTE)
         {
-            Debug.Log(ctx.control);
+            QTE.Instance.SendCombo(ButtonControl.Triangle);
         }
         else
         {
-            Debug.Log(ctx.control);
+
         }
     }
 
