@@ -1,1 +1,5 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Gym2-QTE/QTE.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
