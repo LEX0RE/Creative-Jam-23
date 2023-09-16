@@ -35,7 +35,7 @@ public class PlayerController : Player
         }
         else
         {
-
+            Debug.Log(ctx.control);
         }
     }
     public void OnCircle(InputAction.CallbackContext ctx)
@@ -46,7 +46,7 @@ public class PlayerController : Player
         }
         else
         {
-
+            Debug.Log(ctx.control);
         }
     }
     public void OnSquare(InputAction.CallbackContext ctx)
@@ -57,7 +57,7 @@ public class PlayerController : Player
         }
         else
         {
-
+            Debug.Log(ctx.control);
         }
     }
     public void OnTriangle(InputAction.CallbackContext ctx)
@@ -68,7 +68,7 @@ public class PlayerController : Player
         }
         else
         {
-
+            Debug.Log(ctx.control);
         }
     }
 
