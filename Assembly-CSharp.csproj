@@ -62,6 +62,7 @@
     <Compile Include="Assets\Gym3-Combat\Player.cs" />
     <Compile Include="Assets\Gym2-QTE\PlayerQTEComponent.cs" />
     <Compile Include="Assets\Gym3-Combat\PlayerController.cs" />
+    <Compile Include="Assets\lifeManager.cs" />
     <Compile Include="Assets\Gym2-QTE\FloatingQTE.cs" />
   </ItemGroup>
   <ItemGroup>
