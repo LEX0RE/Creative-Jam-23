@@ -19,3 +19,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Assembly-CSharp.csproj
+**/TextMesh Pro/
