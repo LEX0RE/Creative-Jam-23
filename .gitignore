@@ -1,0 +1,9 @@
+**/Library/
+**/Logs/
+**/Temp/
+**/UserSettings/
+**/.vsconfig
+**/Assembly-CSharp-Editor-firstpass.csproj
+**/Assembly-CSharp-firstpass.csproj
+**/Assembly-CSharp.csproj
+**/Jam.sln
