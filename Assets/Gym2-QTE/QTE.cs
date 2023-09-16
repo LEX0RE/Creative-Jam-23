@@ -5,8 +5,8 @@ using UnityEngine;
 public class QTE : Singleton<QTE>
 {
     [SerializeField] public int maxSequence = 5;
-    [SerializeField] public int maxTime = 10;
-    [SerializeField] public int timeBeforeCanvas = 1;
+    [SerializeField] public float maxTime = 10;
+    [SerializeField] public float timeBeforeCanvas = 0.1f;
     public GameObject canvas;
     private bool eventStarted = false;
     private bool result = false;
@@ -43,7 +43,7 @@ public class QTE : Singleton<QTE>
         yield return new WaitForSeconds(maxTime);
         foreach (PlayerController player in players)
         {
-            player.SetQTE(true);
+            player.SetQTE(false);
         }
     }
 

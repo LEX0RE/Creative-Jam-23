@@ -23,7 +23,54 @@ public class PlayerController : Player
         }
     }
 
-    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+    public void OnMove(InputAction.CallbackContext ctx)
+    {
+        movementInput = ctx.ReadValue<Vector2>();
+    }
+    public void OnCross(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+
+        }
+    }
+    public void OnCircle(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+
+        }
+    }
+    public void OnSquare(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+
+        }
+    }
+    public void OnTriangle(InputAction.CallbackContext ctx)
+    {
+        if (inQTE)
+        {
+            Debug.Log(ctx.control);
+        }
+        else
+        {
+
+        }
+    }
 
     public void SetQTE(bool state)
     {
