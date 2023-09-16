@@ -7,18 +7,26 @@ public class PlayerController : Player
 {
     [SerializeField] public float speed = 5;
     private Vector2 movementInput;
+    private bool inQTE = false;
 
-    // Start is called before the first frame update
     private void Start()
     {
+        inQTE = false;
         transform.Translate(new Vector3(0, 5, 0));
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        transform.Translate(new Vector3(movementInput.x, movementInput.y, 0) * speed * Time.deltaTime);
+        if (!inQTE)
+        {
+            transform.Translate(new Vector3(movementInput.x, movementInput.y, 0) * speed * Time.deltaTime);
+        }
     }
 
-    public void onMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+    public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
+
+    public void SetQTE(bool state)
+    {
+        inQTE = state;
+    }
 }
