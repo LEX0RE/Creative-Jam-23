@@ -1,6 +1,9 @@
 **/Logs/
 **/Temp/
 **/UserSettings/
+**/ProjectSettings/
 **/.vsconfig
 **/Jam.sln
 **/UI Toolkit/
+**/UI Toolkit.meta
+.vscode/extensions.json
