@@ -26,6 +26,14 @@ public class PlayerController : Player
 
     private void Start()
     {
+
+        if (GameObject.Find("Player1"))
+        {
+            gameObject.name = "Player2";
+        }
+        else {
+            gameObject.name = "Player1";
+        }
         inQTE = false;
         transform.Translate(new Vector3(0, 5, 0));
         QTE.Instance.AddPlayer(this);
@@ -35,7 +43,7 @@ public class PlayerController : Player
     {
         if (!inQTE)
         {
-            if (!OnAttack && movementInput.y > -25)
+            if (!OnAttack && !GetComponentInChildren<Animator>().GetBool("Death") && movementInput.y > -25)
             {
                 if (GetComponentInChildren<groundCheck>().isGrounded)
                 {
@@ -61,7 +69,7 @@ public class PlayerController : Player
     {
 
 
-        if (GetComponentInChildren<groundCheck>().isGrounded)
+        if (GetComponentInChildren<groundCheck>().isGrounded && !GetComponentInChildren<Animator>().GetBool("Death"))
         {
             animator.SetBool("Jump", false);
             if (movementInput.x * 100 < 1 && movementInput.x * 100 > -1 & movementInput.y * 100 < 1)
@@ -116,7 +124,7 @@ public class PlayerController : Player
             {
                 QTE.Instance.SendCombo(ButtonControl.Cross);
             }
-            else if (GetComponentInChildren<groundCheck>().isGrounded)
+            else if (GetComponentInChildren<groundCheck>().isGrounded && !GetComponentInChildren<Animator>().GetBool("Death") && !OnAttack)
             {
                 m_Rigidbody.AddForce(new Vector3(0f, jumpForce, 0f));
             }

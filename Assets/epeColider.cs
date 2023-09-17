@@ -15,6 +15,15 @@ public class epeColider : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && gameObject.GetComponentInParent<Player>().damagemoment)
         {
+            if (gameObject.GetComponentInParent<PlayerController>().name == "Player1") {
+                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().player2life -=1 ;
+                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().UpdatePlayer2Life();
+            }
+            else
+            {
+                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().player1life -= 1;
+                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().UpdatePlayer1Life();
+            }
             Debug.Log("hitt");
         }
 
