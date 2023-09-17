@@ -19,5 +19,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
 **/TextMesh Pro/
 **/TextMesh Pro.meta
