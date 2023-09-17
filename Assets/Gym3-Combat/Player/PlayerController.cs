@@ -81,50 +81,62 @@ public class PlayerController : Player
     }
     public void OnCross(InputAction.CallbackContext ctx)
     {
-        if (inQTE)
+        if (ctx.performed)
         {
-            Debug.Log(ButtonControl.Cross);
-            QTE.Instance.SendCombo(ButtonControl.Cross);
-        }
-        else
-        {
+            if (inQTE)
+            {
+                Debug.Log(ButtonControl.Cross);
+                QTE.Instance.SendCombo(ButtonControl.Cross);
+            }
+            else
+            {
 
+            }
         }
     }
     public void OnCircle(InputAction.CallbackContext ctx)
     {
-        if (inQTE)
+        if (ctx.performed)
         {
-            Debug.Log(ButtonControl.Circle);
-            QTE.Instance.SendCombo(ButtonControl.Circle);
-        }
-        else
-        {
+            if (inQTE)
+            {
+                Debug.Log(ButtonControl.Circle);
+                QTE.Instance.SendCombo(ButtonControl.Circle);
+            }
+            else
+            {
 
+            }
         }
     }
     public void OnSquare(InputAction.CallbackContext ctx)
     {
-        if (inQTE)
+        if (ctx.performed)
         {
-            Debug.Log(ButtonControl.Square);
-            QTE.Instance.SendCombo(ButtonControl.Square);
-        }
-        else
-        {
+            if (inQTE)
+            {
+                Debug.Log(ButtonControl.Square);
+                QTE.Instance.SendCombo(ButtonControl.Square);
+            }
+            else
+            {
 
+            }
         }
     }
     public void OnTriangle(InputAction.CallbackContext ctx)
     {
-        if (inQTE)
+        if (ctx.performed)
         {
-            Debug.Log(ButtonControl.Triangle);
-            QTE.Instance.SendCombo(ButtonControl.Triangle);
-        }
-        else
-        {
+            if (inQTE)
+            {
+                Debug.Log(ButtonControl.Triangle);
+                QTE.Instance.SendCombo(ButtonControl.Triangle);
+            }
+            else
+            {
 
+            }
         }
     }
 

@@ -20,7 +20,7 @@
                     "id": "e2e7db5d-708b-47a4-9b10-ffbc971423db",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "SlowTap(duration=0.5,pressPoint=0.5)",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -29,7 +29,7 @@
                     "id": "3d8ef50f-1f27-4afb-8105-6d24eb055668",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "SlowTap(duration=0.5,pressPoint=0.5)",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -38,7 +38,7 @@
                     "id": "8f9b3656-10f3-4b27-9486-ebf1df47eecb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "SlowTap(duration=0.5,pressPoint=0.5)",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -47,7 +47,7 @@
                     "id": "6491b326-1cba-4ba3-8a82-a7eb2eb7f52f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "SlowTap(duration=0.5,pressPoint=0.5)",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
