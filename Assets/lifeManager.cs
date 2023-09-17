@@ -21,9 +21,5 @@ public class lifeManager : MonoBehaviour
     {
         Player2.UpdatePlayerLife(player2life);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
