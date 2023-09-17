@@ -7,7 +7,7 @@ public class epeColider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void OnTriggerEnter(Collider collision)
@@ -15,14 +15,13 @@ public class epeColider : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && gameObject.GetComponentInParent<Player>().damagemoment)
         {
-            if (gameObject.GetComponentInParent<PlayerController>().name == "Player1") {
-                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().player2life -=1 ;
-                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().UpdatePlayer2Life();
+            if (gameObject.GetComponentInParent<PlayerController>().name == "Player1")
+            {
+                GameObject.Find("Player2").GetComponent<PlayerController>().getDamage();
             }
             else
             {
-                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().player1life -= 1;
-                GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>().UpdatePlayer1Life();
+                GameObject.Find("Player1").GetComponent<PlayerController>().getDamage();
             }
             Debug.Log("hitt");
         }

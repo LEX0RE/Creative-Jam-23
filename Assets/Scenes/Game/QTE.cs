@@ -15,7 +15,7 @@ public enum ButtonControl
 
 public class QTE : Singleton<QTE>
 {
-    [SerializeField] public int minSequence = 2;
+    [SerializeField] public int minSequence = 3;
     [SerializeField] public int maxSequence = 5;
     [SerializeField] public float maxTime = 10;
     [SerializeField] public float timeBeforeCanvas = 0.1f;
@@ -25,19 +25,19 @@ public class QTE : Singleton<QTE>
     public GameObject buttonContainer;
     private bool eventStarted = false;
     private bool result = false;
-    private List<Player> players = new List<Player>();
+    private List<PlayerController> players = new List<PlayerController>();
     private List<ButtonControl> combos = new List<ButtonControl>();
     public void Start()
     {
         canvas.SetActive(false);
     }
 
-    public void AddPlayer(Player p)
+    public void AddPlayer(PlayerController p)
     {
         players.Add(p);
     }
 
-    public void StartQTEEvent(Player p)
+    public void StartQTEEvent(PlayerController p)
     {
         if (!eventStarted)
         {
@@ -51,7 +51,7 @@ public class QTE : Singleton<QTE>
         }
     }
 
-    IEnumerator ShowLastChance(Player p)
+    IEnumerator ShowLastChance(PlayerController p)
     {
         MainCamera.Instance.MoveToPlayer(p);
         GenerateCombo();
@@ -62,23 +62,23 @@ public class QTE : Singleton<QTE>
         }
         ShowCombos();
         canvas.SetActive(true);
-        StartCoroutine(StartCombo());
+        StartCoroutine(StartCombo(p));
     }
 
-    IEnumerator StartCombo()
+    IEnumerator StartCombo(PlayerController p)
     {
         yield return new WaitForSeconds(maxTime);
         if (combos.Count > 0)
         {
-            StartCoroutine(EndCombo());
+            StartCoroutine(EndCombo(p));
         }
     }
 
-    IEnumerator EndCombo()
+    IEnumerator EndCombo(PlayerController p)
     {
         if (combos.Count > 0)
         {
-            Debug.Log("Game End");
+            p.getDamage();
             ClearCombos();
         }
         foreach (PlayerController player in players)
@@ -90,7 +90,7 @@ public class QTE : Singleton<QTE>
         yield return new WaitForSeconds(timeBeforeCanvas);
     }
 
-    public void SendCombo(ButtonControl b)
+    public void SendCombo(ButtonControl b, PlayerController p)
     {
         Debug.Log(b);
         if (combos.Count > 0 && combos[0] == b)
@@ -98,7 +98,7 @@ public class QTE : Singleton<QTE>
             combos.RemoveAt(0);
             if (combos.Count == 0)
             {
-                StartCoroutine(EndCombo());
+                StartCoroutine(EndCombo(p));
             }
             else
             {
