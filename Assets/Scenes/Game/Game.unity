@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bec54b73ebb394ca58a53e0d8178fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnLocations: []
 --- !u!1 &1227643327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,7 +1662,7 @@ GameObject:
   - component: {fileID: 1501574127}
   - component: {fileID: 1501574126}
   m_Layer: 0
-  m_Name: Platform (1)
+  m_Name: MovingPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1785,7 @@ Transform:
   - {fileID: 1022104407}
   - {fileID: 1008297772}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1784869886
 GameObject:
