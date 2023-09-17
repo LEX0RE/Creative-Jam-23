@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Player
 {
     [SerializeField] public float speed = 5;
     [SerializeField] public float jumpForce = 1000f;
+    [SerializeField] public int waitForEnd = 3;
     public bool idle = true;
     public bool mooveLeft = false;
     public bool moove = false;
@@ -185,8 +187,15 @@ public class PlayerController : Player
             else
             {
                 gameObject.GetComponentInChildren<Animator>().SetBool("Death", true);
+                StartCoroutine(EndGame());
             }
         }
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(waitForEnd);
+        SceneManager.LoadScene("EndMenu");
     }
 
     public void getDamage()

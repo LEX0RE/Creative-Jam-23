@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagemoment: 0
+  damagedone: 0
   speed: 10
   jumpForce: 800
+  waitForEnd: 3
   idle: 1
   mooveLeft: 0
   moove: 0
@@ -837,6 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagemoment: 0
+  damagedone: 0
 --- !u!114 &4217671003812635705
 MonoBehaviour:
   m_ObjectHideFlags: 0
