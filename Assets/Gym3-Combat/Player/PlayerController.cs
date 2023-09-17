@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : Player
 {
     [SerializeField] public float speed = 5;
-    [SerializeField] public float jumpForce = 500f;
+    [SerializeField] public float Jumpspeed = 1;
+    [SerializeField] public float jumpForce = 1000f;
     public bool idle = true;
     public bool mooveLeft = false;
     public bool moove = false;
@@ -36,7 +37,14 @@ public class PlayerController : Player
         {
             if (!OnAttack && movementInput.y > -25)
             {
-                transform.Translate(new Vector3(0, 0, movementInput.x) * speed * Time.deltaTime);
+                if (GetComponentInChildren<groundCheck>().isGrounded)
+                {
+                    transform.Translate(new Vector3(0, 0, movementInput.x) * speed * Time.deltaTime);
+                }
+                else {
+                    transform.Translate(new Vector3(0, 0, movementInput.x) * Jumpspeed * Time.deltaTime);
+                }
+              
             }
             moovefunction();
             actionIngame();
