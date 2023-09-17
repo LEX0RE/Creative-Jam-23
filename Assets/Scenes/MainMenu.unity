@@ -260,6 +260,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3712321132091984233, guid: 444bede746312a648abd5c891846df0a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1184344527}
+    - target: {fileID: 3712321132091984233, guid: 444bede746312a648abd5c891846df0a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 3817687980642515773, guid: 444bede746312a648abd5c891846df0a, type: 3}
       propertyPath: m_Pivot.x
       value: 0

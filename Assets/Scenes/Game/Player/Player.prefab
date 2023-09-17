@@ -51,7 +51,7 @@ MonoBehaviour:
   damagemoment: 0
   damagedone: 0
   speed: 10
-  jumpForce: 800
+  jumpForce: 1000
   waitForEnd: 3
   idle: 1
   mooveLeft: 0
@@ -167,6 +167,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6491b326-1cba-4ba3-8a82-a7eb2eb7f52f
     m_ActionName: Gameplay/Square[/DualShock4GamepadHID1/buttonWest,/DualShock4GamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 782f1710-f0e9-467f-9041-4b2fa9fd5208
+    m_ActionName: Gameplay/Options[/DualShock4GamepadHID1/start,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

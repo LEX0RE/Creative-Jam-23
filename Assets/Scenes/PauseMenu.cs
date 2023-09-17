@@ -9,22 +9,18 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject optionsPanel;
 
-    void Update()
+    public void UpdateMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pauseMenuUI.activeSelf)
         {
-            if (pauseMenuUI.activeSelf)
+            Resume();
+        }
+        else
+        {
+            if (!optionsPanel.activeSelf)
             {
-                Resume();
+                Pause();
             }
-            else
-            {
-                if (!optionsPanel.activeSelf)
-                {
-                    Pause();
-                }
-            }
-
         }
     }
     public void Pause()
