@@ -60,8 +60,28 @@ public class PlayerController : Player
 
     public void moovefunction()
     {
+        if (!GetComponentInChildren<Animator>().GetBool("Death"))
+        {
+            if (movementInput.x < 0)
+            {
+                mooveLeft = true;
+                if (!rotateApplied)
+                {
+                    mesh.transform.Rotate(gameObject.transform.rotation.x, 180, gameObject.transform.rotation.z);
+                    rotateApplied = true;
+                }
+            }
+            else if (movementInput.x > 0)
+            {
+                mooveLeft = false;
+                if (rotateApplied)
+                {
+                    mesh.transform.Rotate(gameObject.transform.rotation.x, -180, gameObject.transform.rotation.z);
 
-
+                    rotateApplied = false;
+                }
+            }
+        }
         if (GetComponentInChildren<groundCheck>().isGrounded && !GetComponentInChildren<Animator>().GetBool("Death"))
         {
             animator.SetBool("Jump", false);
@@ -77,25 +97,25 @@ public class PlayerController : Player
                 idle = false;
                 moove = true;
                 animator.SetBool("Run", true);
-                if (movementInput.x < 0)
-                {
-                    mooveLeft = true;
-                    if (!rotateApplied)
-                    {
-                        mesh.transform.Rotate(gameObject.transform.rotation.x, 180, gameObject.transform.rotation.z);
-                        rotateApplied = true;
-                    }
-                }
-                else
-                {
-                    mooveLeft = false;
-                    if (rotateApplied)
-                    {
-                        mesh.transform.Rotate(gameObject.transform.rotation.x, -180, gameObject.transform.rotation.z);
+                // if (movementInput.x < 0)
+                // {
+                //     mooveLeft = true;
+                //     if (!rotateApplied)
+                //     {
+                //         mesh.transform.Rotate(gameObject.transform.rotation.x, 180, gameObject.transform.rotation.z);
+                //         rotateApplied = true;
+                //     }
+                // }
+                // else
+                // {
+                //     mooveLeft = false;
+                //     if (rotateApplied)
+                //     {
+                //         mesh.transform.Rotate(gameObject.transform.rotation.x, -180, gameObject.transform.rotation.z);
 
-                        rotateApplied = false;
-                    }
-                }
+                //         rotateApplied = false;
+                //     }
+                // }
             }
         }
         else
@@ -183,7 +203,7 @@ public class PlayerController : Player
             }
             else
             {
-                gameObject.GetComponent<Animator>().SetBool("Death", true);
+                gameObject.GetComponentInChildren<Animator>().SetBool("Death", true);
             }
         }
     }
