@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Timer());
+        //StartCoroutine(Timer());
         lifeMang =  GameObject.FindWithTag("GestionnaireVie").GetComponent<lifeManager>();
     }
 
