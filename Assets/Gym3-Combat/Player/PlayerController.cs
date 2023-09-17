@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : Player
 {
     [SerializeField] public float speed = 5;
+    [SerializeField] public float jumpForce = 500f;
     public bool idle = true;
     public bool mooveLeft = false;
     public bool moove = false;
@@ -15,6 +16,12 @@ public class PlayerController : Player
     private bool rotateApplied = false;
     private Vector2 movementInput;
     private bool inQTE = false;
+    private Rigidbody m_Rigidbody;
+
+    private void Awake()
+    {
+        m_Rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void Start()
     {
@@ -101,9 +108,9 @@ public class PlayerController : Player
             {
                 QTE.Instance.SendCombo(ButtonControl.Cross);
             }
-            else
+            else if (GetComponentInChildren<groundCheck>().isGrounded)
             {
-                Debug.Log(ctx.control);
+                m_Rigidbody.AddForce(new Vector3(0f, jumpForce, 0f));
             }
         }
     }
@@ -133,7 +140,6 @@ public class PlayerController : Player
             {
                 if (GetComponentInChildren<groundCheck>().isGrounded)
                 {
-                    Debug.Log("easssyy");
                     OnAttack = true;
                     animator.SetBool("Attack", true);
                 }
