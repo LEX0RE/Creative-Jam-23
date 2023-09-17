@@ -17,6 +17,7 @@ public class GameOver : MonoBehaviour
 
     public void RestartGame()
     {
+        PlayerController.nextId = 1;
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
     }

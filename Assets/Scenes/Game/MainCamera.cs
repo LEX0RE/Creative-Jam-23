@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector3 = UnityEngine.Vector3;
 
 public class MainCamera : Singleton<MainCamera>
 {
@@ -44,7 +46,7 @@ public class MainCamera : Singleton<MainCamera>
         }
         else
         {
-            return target.gameObject.transform.position + new Vector3(2, 1, -5);
+            return target.gameObject.transform.position + new Vector3(2, 1, -6);
         }
     }
 }

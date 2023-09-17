@@ -21,10 +21,12 @@ public class QTE : Singleton<QTE>
     [SerializeField] public float timeBeforeCanvas = 0.1f;
     [SerializeField] private List<Sprite> buttons;
     [SerializeField] private List<GameObject> slots;
+    [SerializeField] public Sprite lastChancePlayer1;
+    [SerializeField] public Sprite lastChancePlayer2;
+    [SerializeField] public Image lastChance;
     public GameObject canvas;
     public GameObject buttonContainer;
     private bool eventStarted = false;
-    private bool result = false;
     private List<PlayerController> players = new List<PlayerController>();
     private List<ButtonControl> combos = new List<ButtonControl>();
     public void Start()
@@ -41,7 +43,6 @@ public class QTE : Singleton<QTE>
     {
         if (!eventStarted)
         {
-            result = false;
             eventStarted = true;
             foreach (PlayerController player in players)
             {
@@ -61,6 +62,14 @@ public class QTE : Singleton<QTE>
             Debug.Log(button);
         }
         ShowCombos();
+        if (p.playerID == 1)
+        {
+            lastChance.sprite = lastChancePlayer1;
+        }
+        else
+        {
+            lastChance.sprite = lastChancePlayer2;
+        }
         canvas.SetActive(true);
         StartCoroutine(StartCombo(p));
     }
