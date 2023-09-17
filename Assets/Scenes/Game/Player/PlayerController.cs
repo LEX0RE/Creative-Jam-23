@@ -97,25 +97,6 @@ public class PlayerController : Player
                 idle = false;
                 moove = true;
                 animator.SetBool("Run", true);
-                // if (movementInput.x < 0)
-                // {
-                //     mooveLeft = true;
-                //     if (!rotateApplied)
-                //     {
-                //         mesh.transform.Rotate(gameObject.transform.rotation.x, 180, gameObject.transform.rotation.z);
-                //         rotateApplied = true;
-                //     }
-                // }
-                // else
-                // {
-                //     mooveLeft = false;
-                //     if (rotateApplied)
-                //     {
-                //         mesh.transform.Rotate(gameObject.transform.rotation.x, -180, gameObject.transform.rotation.z);
-
-                //         rotateApplied = false;
-                //     }
-                // }
             }
         }
         else
