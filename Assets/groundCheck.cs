@@ -13,7 +13,7 @@ public class groundCheck : MonoBehaviour
    
     void OnTriggerStay(Collider collision)
     {
-        Debug.Log("Entered");
+        
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
@@ -22,7 +22,7 @@ public class groundCheck : MonoBehaviour
     }
     void OnTriggerExit(Collider collision)
     {
-        Debug.Log("Entered");
+      
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
