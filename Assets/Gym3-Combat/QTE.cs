@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public enum ButtonControl
@@ -18,11 +19,14 @@ public class QTE : Singleton<QTE>
     [SerializeField] public int maxSequence = 5;
     [SerializeField] public float maxTime = 10;
     [SerializeField] public float timeBeforeCanvas = 0.1f;
+    [SerializeField] private List<Sprite> buttons;
+    [SerializeField] private List<GameObject> slots;
     public GameObject canvas;
+    public GameObject buttonContainer;
     private bool eventStarted = false;
     private bool result = false;
     private List<Player> players = new List<Player>();
-    private Stack<ButtonControl> inputs = new Stack<ButtonControl>();
+    private List<ButtonControl> combos = new List<ButtonControl>();
     public void Start()
     {
         canvas.SetActive(false);
@@ -39,6 +43,10 @@ public class QTE : Singleton<QTE>
         {
             result = false;
             eventStarted = true;
+            foreach (PlayerController player in players)
+            {
+                player.SetQTE(true);
+            }
             StartCoroutine(ShowLastChance(p));
         }
     }
@@ -46,16 +54,13 @@ public class QTE : Singleton<QTE>
     IEnumerator ShowLastChance(Player p)
     {
         MainCamera.Instance.MoveToPlayer(p);
-        generateCombo();
+        GenerateCombo();
         yield return new WaitForSeconds(timeBeforeCanvas);
-        foreach (ButtonControl button in inputs)
+        foreach (ButtonControl button in combos)
         {
             Debug.Log(button);
         }
-        foreach (PlayerController player in players)
-        {
-            player.SetQTE(true);
-        }
+        ShowCombos();
         canvas.SetActive(true);
         StartCoroutine(StartCombo());
     }
@@ -63,7 +68,7 @@ public class QTE : Singleton<QTE>
     IEnumerator StartCombo()
     {
         yield return new WaitForSeconds(maxTime);
-        if (inputs.Count > 0)
+        if (combos.Count > 0)
         {
             StartCoroutine(EndCombo());
         }
@@ -71,25 +76,34 @@ public class QTE : Singleton<QTE>
 
     IEnumerator EndCombo()
     {
-        if (inputs.Count > 0)
+        if (combos.Count > 0)
         {
             Debug.Log("Game End");
-            inputs.Clear();
+            ClearCombos();
         }
         foreach (PlayerController player in players)
         {
             player.SetQTE(false);
         }
+        canvas.SetActive(false);
         MainCamera.Instance.clearView();
         yield return new WaitForSeconds(timeBeforeCanvas);
-        canvas.SetActive(false);
     }
 
     public void SendCombo(ButtonControl b)
     {
-        if (inputs.Count > 0 && inputs.Peek() == b)
+        Debug.Log(b);
+        if (combos.Count > 0 && combos[0] == b)
         {
-            inputs.Pop();
+            combos.RemoveAt(0);
+            if (combos.Count == 0)
+            {
+                StartCoroutine(EndCombo());
+            }
+            else
+            {
+                ShowCombos();
+            }
         }
     }
 
@@ -98,13 +112,43 @@ public class QTE : Singleton<QTE>
         players.Clear();
     }
 
-    private void generateCombo()
+    public void ShowCombos()
+    {
+        while (buttonContainer.transform.childCount > 0)
+        {
+            DestroyImmediate(buttonContainer.transform.GetChild(0).gameObject);
+        }
+        for (int i = 0; i < combos.Count; i++)
+        {
+            slots[i].GetComponent<Image>().sprite = buttons[(int)combos[i]];
+            Color tempColor = slots[i].GetComponent<Image>().color;
+            tempColor.a = 1f;
+            slots[i].GetComponent<Image>().color = tempColor;
+        }
+        for (int i = combos.Count; i < maxSequence; i++)
+        {
+            Color tempColor = slots[i].GetComponent<Image>().color;
+            tempColor.a = 0f;
+            slots[i].GetComponent<Image>().color = tempColor;
+        }
+    }
+
+    private void ClearCombos()
+    {
+        while (buttonContainer.transform.childCount > 0)
+        {
+            DestroyImmediate(buttonContainer.transform.GetChild(0).gameObject);
+        }
+        combos.Clear();
+    }
+
+    private void GenerateCombo()
     {
         int sequenceNumber = Random.Range(minSequence, maxSequence);
         for (int i = 0; i < sequenceNumber; i++)
         {
             int button = Random.Range(0, Enum.GetNames(typeof(ButtonControl)).Length);
-            inputs.Push((ButtonControl)button);
+            combos.Add((ButtonControl)button);
         }
     }
 }

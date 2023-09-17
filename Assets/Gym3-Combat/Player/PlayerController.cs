@@ -13,23 +13,24 @@ public class PlayerController : Player
     [SerializeField] public float speed = 5;
     private Vector2 movementInput;
     public Animator animator;
-    private bool inQTE = false;
+    public bool inQTE = false;
 
 
     private void Start()
     {
         inQTE = false;
         transform.Translate(new Vector3(0, 5, 0));
+        QTE.Instance.AddPlayer(this);
     }
 
     private void Update()
     {
-        if (inQTE)
+        if (!inQTE)
         {
             transform.Translate(new Vector3(0, movementInput.y, movementInput.x) * speed * Time.deltaTime);
+            moovefunction();
+            actionIngame();
         }
-        moovefunction();
-        actionIngame();
     }
     public void actionIngame()
     {
@@ -82,6 +83,7 @@ public class PlayerController : Player
     {
         if (inQTE)
         {
+            Debug.Log(ButtonControl.Cross);
             QTE.Instance.SendCombo(ButtonControl.Cross);
         }
         else
@@ -93,6 +95,7 @@ public class PlayerController : Player
     {
         if (inQTE)
         {
+            Debug.Log(ButtonControl.Circle);
             QTE.Instance.SendCombo(ButtonControl.Circle);
         }
         else
@@ -104,6 +107,7 @@ public class PlayerController : Player
     {
         if (inQTE)
         {
+            Debug.Log(ButtonControl.Square);
             QTE.Instance.SendCombo(ButtonControl.Square);
         }
         else
@@ -115,6 +119,7 @@ public class PlayerController : Player
     {
         if (inQTE)
         {
+            Debug.Log(ButtonControl.Triangle);
             QTE.Instance.SendCombo(ButtonControl.Triangle);
         }
         else
@@ -125,6 +130,7 @@ public class PlayerController : Player
 
     public void SetQTE(bool state)
     {
+        Debug.Log(state);
         inQTE = state;
 
     }
