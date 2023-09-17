@@ -29,7 +29,7 @@ public class PlayerController : Player
         {
             if (!OnAttack && movementInput.y > -25)
             {
-                transform.Translate(new Vector3(0, movementInput.y, movementInput.x) * speed * Time.deltaTime);
+                transform.Translate(new Vector3(0, 0, movementInput.x) * speed * Time.deltaTime);
             }
             moovefunction();
             actionIngame();
@@ -99,7 +99,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                Debug.Log(ctx.control);
+                QTE.Instance.SendCombo(ButtonControl.Cross);
             }
             else
             {
@@ -113,7 +113,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                Debug.Log(ctx.control);
+                QTE.Instance.SendCombo(ButtonControl.Circle);
             }
             else
             {
@@ -127,7 +127,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                Debug.Log(ctx.control);
+                QTE.Instance.SendCombo(ButtonControl.Square);
             }
             else
             {
@@ -146,7 +146,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                Debug.Log(ctx.control);
+                QTE.Instance.SendCombo(ButtonControl.Triangle);
             }
             else
             {
