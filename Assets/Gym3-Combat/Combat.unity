@@ -517,19 +517,6 @@ MonoBehaviour:
     m_ActionId: 8d0023d4-7b83-456e-ae5e-276e54ed11a8
     m_ActionName: Gameplay/Move[/DualShock4GamepadHID/leftStick,/DualShock4GamepadHID1/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-<<<<<<< HEAD
-      m_Calls: []
-    m_ActionId: e2e7db5d-708b-47a4-9b10-ffbc971423db
-    m_ActionName: Gameplay/Circle[/DualSenseGamepadHID/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3d8ef50f-1f27-4afb-8105-6d24eb055668
-    m_ActionName: Gameplay/Triangle[/DualSenseGamepadHID/buttonNorth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8f9b3656-10f3-4b27-9486-ebf1df47eecb
-    m_ActionName: Gameplay/Cross[/DualSenseGamepadHID/buttonSouth]
-=======
       m_Calls:
       - m_Target: {fileID: 532279761}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
@@ -577,7 +564,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8f9b3656-10f3-4b27-9486-ebf1df47eecb
     m_ActionName: Gameplay/Cross[/DualShock4GamepadHID1/buttonSouth,/DualShock4GamepadHID/buttonSouth]
->>>>>>> 05c27ceb8bdfeab1d39affd834b4b4417c706905
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 532279761}
@@ -593,11 +579,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 6491b326-1cba-4ba3-8a82-a7eb2eb7f52f
-<<<<<<< HEAD
-    m_ActionName: Gameplay/Square[/DualSenseGamepadHID/buttonWest]
-=======
     m_ActionName: Gameplay/Square[/DualShock4GamepadHID1/buttonWest,/DualShock4GamepadHID/buttonWest]
->>>>>>> 05c27ceb8bdfeab1d39affd834b4b4417c706905
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

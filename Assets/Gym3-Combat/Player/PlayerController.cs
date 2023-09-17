@@ -1,4 +1,3 @@
-<<<<<<< HEAD:Assets/Gym3-Combat/PlayerController.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +27,8 @@ public class PlayerController : Player
     {
         if (!inQTE)
         {
-            if (!OnAttack && movementInput.y > -25) {
+            if (!OnAttack && movementInput.y > -25)
+            {
                 transform.Translate(new Vector3(0, movementInput.y, movementInput.x) * speed * Time.deltaTime);
             }
             moovefunction();
