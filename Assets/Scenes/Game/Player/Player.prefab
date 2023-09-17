@@ -50,14 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagemoment: 0
   speed: 10
-  Jumpspeed: 3
-  jumpForce: 500
+  jumpForce: 800
   idle: 1
   mooveLeft: 0
   moove: 0
   OnAttack: 0
   mesh: {fileID: 7491981028617001268}
   animator: {fileID: 4202739664691599860}
+  startPosition: {x: 0, y: 0, z: 0}
+  playerID: 0
+  playerLife: {fileID: 0}
 --- !u!114 &4558836404874574174
 MonoBehaviour:
   m_ObjectHideFlags: 0

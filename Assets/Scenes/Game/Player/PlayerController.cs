@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : Player
 {
     [SerializeField] public float speed = 5;
-    [SerializeField] public float Jumpspeed = 1;
     [SerializeField] public float jumpForce = 1000f;
     public bool idle = true;
     public bool mooveLeft = false;
@@ -14,6 +13,12 @@ public class PlayerController : Player
     public bool OnAttack = false;
     public GameObject mesh;
     public Animator animator;
+    public Vector3 startPosition;
+    public static int nextId = 1;
+    public int playerID;
+    public LifePlayer playerLife;
+    private int currentLife = 2;
+    private bool lastChance = true;
     private bool rotateApplied = false;
     private Vector2 movementInput;
     private bool inQTE = false;
@@ -26,14 +31,13 @@ public class PlayerController : Player
 
     private void Start()
     {
-
-        if (GameObject.Find("Player1"))
-        {
-            gameObject.name = "Player2";
-        }
-        else {
-            gameObject.name = "Player1";
-        }
+        playerID = PlayerController.nextId++;
+        currentLife = 2;
+        transform.position = startPosition;
+        gameObject.name = "Player" + this.playerID;
+        lastChance = true;
+        playerLife = GameObject.Find("Player" + this.playerID + "-Vie").GetComponent<LifePlayer>();
+        playerLife.UpdatePlayerLife(currentLife);
         inQTE = false;
         transform.Translate(new Vector3(0, 5, 0));
         QTE.Instance.AddPlayer(this);
@@ -41,26 +45,15 @@ public class PlayerController : Player
 
     private void Update()
     {
+        checkPlayerlife();
         if (!inQTE)
         {
             if (!OnAttack && !GetComponentInChildren<Animator>().GetBool("Death") && movementInput.y > -25)
             {
-                if (GetComponentInChildren<groundCheck>().isGrounded)
-                {
-                    transform.Translate(new Vector3(0, 0, movementInput.x) * speed * Time.deltaTime);
-                }
-                else {
-                    transform.Translate(new Vector3(0, 0, movementInput.x) * Jumpspeed * Time.deltaTime);
-                }
-              
+                transform.Translate(new Vector3(0, 0, movementInput.x) * speed * Time.deltaTime);
             }
             moovefunction();
-            actionIngame();
         }
-    }
-    public void actionIngame()
-    {
-
     }
 
     public void onMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
@@ -122,7 +115,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                QTE.Instance.SendCombo(ButtonControl.Cross);
+                QTE.Instance.SendCombo(ButtonControl.Cross, this);
             }
             else if (GetComponentInChildren<groundCheck>().isGrounded && !GetComponentInChildren<Animator>().GetBool("Death") && !OnAttack)
             {
@@ -136,11 +129,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                QTE.Instance.SendCombo(ButtonControl.Circle);
-            }
-            else
-            {
-                Debug.Log(ctx.control);
+                QTE.Instance.SendCombo(ButtonControl.Circle, this);
             }
         }
     }
@@ -150,7 +139,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                QTE.Instance.SendCombo(ButtonControl.Square);
+                QTE.Instance.SendCombo(ButtonControl.Square, this);
             }
             else
             {
@@ -168,11 +157,7 @@ public class PlayerController : Player
         {
             if (inQTE)
             {
-                QTE.Instance.SendCombo(ButtonControl.Triangle);
-            }
-            else
-            {
-                Debug.Log(ctx.control);
+                QTE.Instance.SendCombo(ButtonControl.Triangle, this);
             }
         }
     }
@@ -185,5 +170,27 @@ public class PlayerController : Player
     public void eventFinishfight()
     {
         animator.SetBool("Attack", false);
+    }
+    public void checkPlayerlife()
+    {
+        if (currentLife <= 0)
+        {
+            if (lastChance)
+            {
+                QTE.Instance.StartQTEEvent(this);
+                lastChance = false;
+                currentLife++;
+            }
+            else
+            {
+                gameObject.GetComponent<Animator>().SetBool("Death", true);
+            }
+        }
+    }
+
+    public void getDamage()
+    {
+        currentLife -= 1;
+        playerLife.UpdatePlayerLife(currentLife);
     }
 }

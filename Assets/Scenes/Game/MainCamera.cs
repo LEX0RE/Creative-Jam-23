@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class MainCamera : Singleton<MainCamera>
 {
-    [SerializeField] public static Vector3 defaultPosition = new(0.0f, 0.5f, -12.0f);
+    [SerializeField] public static Vector3 defaultPosition = new(0.0f, 0.5f, -20.0f);
     [SerializeField] public float transitionSpeed = 10f;
     [SerializeField] public float distanceToStop = 0.0001f;
     private Player target;

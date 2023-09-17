@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerSpawnManager : MonoBehaviour
 {
     public GameObject[] spawnLocations;
-    void OnPlayerJoined(PlayerInput playerInput)
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
-
+        // Set the start spawn position of the player using the location at the associated element into the array.
+        playerInput.gameObject.GetComponent<PlayerController>().startPosition = spawnLocations[playerInput.playerIndex].transform.position;
     }
 }
