@@ -10,7 +10,7 @@ public class PlayerController : Player
     public bool moove = false;
     private bool rotateApplied = false;
     public GameObject mesh;
-    [SerializeField] public float speed = 5;
+    [SerializeField] public float speed = 3;
     private Vector2 movementInput;
     public Animator animator;
     public bool inQTE = false;

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSequence: 2
   maxSequence: 5
-  maxTime: 10
+  maxTime: 3
   timeBeforeCanvas: 0.3
   buttons:
   - {fileID: 21300000, guid: 6b86c6f89c62b3f43ad9c05e3e9cafd5, type: 3}
