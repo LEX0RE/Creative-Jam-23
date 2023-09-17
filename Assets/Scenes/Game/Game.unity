@@ -2551,7 +2551,9 @@ PrefabInstance:
       value: Menus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8244587519758894159, guid: 9cfebee9ab52cc949a192447ea840f39, type: 3}
+    - {fileID: 483558813597443573, guid: 9cfebee9ab52cc949a192447ea840f39, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cfebee9ab52cc949a192447ea840f39, type: 3}
